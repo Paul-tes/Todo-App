@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/utils/dialog_box.dart';
 import 'package:todo/utils/todo_tile.dart';
 
 
@@ -23,6 +24,15 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // creat new task method
+  void createNewTask() {
+    showDialog(
+      context: context, builder: (context) {
+        return DialogBox();
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: createNewTask,
         child: Icon(Icons.add),
         ),
 
