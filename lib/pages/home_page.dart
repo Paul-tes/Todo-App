@@ -12,6 +12,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  final _controller = TextEditingController();
+
   List todoList = [
     ["Task one wag", false],
     ["Do exersise task two", false]
@@ -24,13 +26,35 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // save  new task method
+  void savenewTask() {
+    setState(() {
+      todoList.add([_controller.text, false]);
+      _controller.clear();
+    });
+
+    // clear pop up create new task modal
+    Navigator.of(context).pop();
+  }
+
   // creat new task method
   void createNewTask() {
     showDialog(
       context: context, builder: (context) {
-        return DialogBox();
+        return DialogBox(
+          controller: _controller,
+          onSave: savenewTask,
+          onCancel: () => Navigator.of(context).pop(),
+        );
       }
     );
+  }
+
+  // delete task
+  void deleteTask(int index) {
+    setState(() {
+      todoList.removeAt(index);
+    });
   }
 
   @override
@@ -54,6 +78,7 @@ class _HomePageState extends State<HomePage> {
             taskName: todoList[index][0],
             taskCompleted: todoList[index][1],
             onChanged: (value) => checkBoxChanged(index),
+            deleteFunction: (context) => deleteTask(index),
           );
         },
       ),
