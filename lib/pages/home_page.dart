@@ -32,6 +32,11 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
       ),
 
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        ),
+
       body: ListView.builder(
         itemCount: todoList.length,
         itemBuilder: (context, index) {
