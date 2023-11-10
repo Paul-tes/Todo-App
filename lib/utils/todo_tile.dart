@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:todo/constants/Colors.dart';
 
 class ToDoTile extends StatelessWidget {
 
@@ -47,7 +48,9 @@ class ToDoTile extends StatelessWidget {
                 style: TextStyle(
                   decoration: taskCompleted
                   ? TextDecoration.lineThrough
-                  : TextDecoration.none
+                  : TextDecoration.none,
+                  color: myBlack,
+                  fontSize: 16,
                 ),
                 ),
             ],
